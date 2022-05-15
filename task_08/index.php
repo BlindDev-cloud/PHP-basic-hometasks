@@ -2,9 +2,16 @@
 
 $year = random_int(0, 9999);
 
-echo "Year: {$year}", PHP_EOL;
-if(0 == $year % 4){
-    echo "Yes it's a leap year", PHP_EOL;
+echo 'Year: '.$year, PHP_EOL;
+
+if(0 == $year % 100){
+    if(0 == $year % 400) {
+        echo 'Yes, it\'s a leap year', PHP_EOL;
+    }else{
+        echo 'No, it\'s not a leap year', PHP_EOL;
+    }
+}elseif(0 == $year % 4){
+    echo 'Yes, it\'s a leap year', PHP_EOL;
 }else{
-    echo "No it's not a leap year", PHP_EOL;
+    echo 'No, it\'s not a leap year', PHP_EOL;
 }
