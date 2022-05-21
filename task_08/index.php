@@ -1,6 +1,6 @@
 <?php
 
-//$year = random_int(0, 9999);
+$year = random_int(0, 9999);
 
 echo 'Year: '.$year.' ';
 
