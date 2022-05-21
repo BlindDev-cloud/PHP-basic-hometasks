@@ -1,17 +1,21 @@
 <?php
 
-$year = random_int(0, 9999);
+//$year = random_int(0, 9999);
 
-echo 'Year: '.$year, PHP_EOL;
+echo 'Year: '.$year.' ';
 
-if(0 == $year % 100){
-    if(0 == $year % 400) {
-        echo 'Yes, it\'s a leap year', PHP_EOL;
+if(0 == $year % 4){
+    if(0 == $year % 100){
+        if(0 == $year % 400){
+            echo 'is a leap year.';
+        }else{
+            echo 'is not a leap year.';
+        }
     }else{
-        echo 'No, it\'s not a leap year', PHP_EOL;
+        echo 'is a leap year.';
     }
-}elseif(0 == $year % 4){
-    echo 'Yes, it\'s a leap year', PHP_EOL;
 }else{
-    echo 'No, it\'s not a leap year', PHP_EOL;
+    echo 'is not a leap year.';
 }
+
+echo PHP_EOL;
