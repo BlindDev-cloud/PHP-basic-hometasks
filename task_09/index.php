@@ -2,34 +2,13 @@
 
 $number = random_int(0, 9999);
 //$number = ;
-$thousands = 0;
-$hundreds = 0;
-$dozens = 0;
-$units = 0;
-
-if((int)($number / 1000)){
-    $thousands = (int)($number / 1000);
-    $number -= ($number - $number % 1000);
-}
-
-if((int)($number / 100)){
-    $hundreds = (int)($number / 100);
-    $number -= ($number - $number % 100);
-}
-
-if((int)($number / 10)){
-    $dozens = (int)($number / 10);
-    $number -= ($number - $number % 10);
-}
-
-if($number){
-    $units = $number;
-}
-
-$number = $thousands * 1000 + $hundreds * 100 + $dozens * 10 + $units;
+$thousand = 0;
+$hundred = 0;
+$dozen = 0;
+$unit = 0;
 
 //масив для запису чотиризначноого (и меньшого) числа словами
-$numberToWord = [
+$numbersToWords = [
     ['одна', 'дві', 'три', 'чотири', 'п\'ять', 'шість', 'сім', 'вісім', 'дев\'ять'],
     ['сто', 'двісті', 'триста', 'чотириста', 'п\'ятсот', 'шістсот', 'сімсот', 'вісімсот', 'дев\'ятсот'],
     ['десять', 'двадцять', 'тридцять', 'сорок', 'п\'ятдесят', 'шістдесят', 'сімдесят', 'вісімдесят', 'дев\'яносто'],
@@ -45,51 +24,62 @@ $currency = [
 
 echo $number.' - ';
 
-if($thousands){
-    if(5 <= $thousands){
-        echo $numberToWord[0][$thousands - 1]. ' тисяч ';
-    }elseif(1 < $thousands){
-        echo $numberToWord[0][$thousands - 1]. ' тисячі ';
-    }else{
-        echo $numberToWord[0][$thousands - 1]. ' тисяча ';
+if($number) {
+    if((int)($number / 1000)){
+        $thousand = (int)($number / 1000);
+        $number -= ($number - $number % 1000);
     }
-}
 
-if($hundreds){
-    echo $numberToWord[1][$hundreds - 1]. ' ';
-}
-
-if($dozens){
-    if(1 == $dozens && 0 < $units){
-        echo $numberToWord[4][$units - 1]. ' ';
-        $units = 0;
-    }else{
-        echo $numberToWord[2][$dozens - 1]. ' ';
+    if((int)($number / 100)){
+        $hundred = (int)($number / 100);
+        $number -= ($number - $number % 100);
     }
-}
 
-if($units){
-    echo $numberToWord[3][$units - 1]. ' ';
-}
+    if((int)($number / 10)){
+        $dozen = (int)($number / 10);
+        $number -= ($number - $number % 10);
+    }
 
-if(!$number){
+    if($number){
+        $unit = $number;
+    }
+
+    if ($thousand) {
+        if (5 <= $thousand) {
+            echo $numbersToWords[0][$thousand - 1] . ' тисяч ';
+        } elseif (1 < $thousand) {
+            echo $numbersToWords[0][$thousand - 1] . ' тисячі ';
+        } else {
+            echo $numbersToWords[0][$thousand - 1] . ' тисяча ';
+        }
+    }
+
+    if ($hundred) {
+        echo $numbersToWords[1][$hundred - 1] . ' ';
+    }
+
+    if ($dozen) {
+        if (1 == $dozen && 0 < $unit) {
+            echo $numbersToWords[4][$unit - 1] . ' ';
+            $unit = 0;
+        } else {
+            echo $numbersToWords[2][$dozen - 1] . ' ';
+        }
+    }
+
+    if ($unit) {
+        echo $numbersToWords[3][$unit - 1] . ' ';
+    }
+}else{
     echo 'нуль ';
 }
 
-if($number){
-    if(1 == $dozens && 0 < $units){
-        echo $currency[0];
-    }elseif(5 <= $units){
-        echo $currency[0];
-    }elseif(1 < $units){
-        echo $currency[1];
-    }elseif(1 == $units){
-        echo $currency[2];
-    }else{
-        echo $currency[0];
-    }
-}else{
+if(5 <= $unit || 0 == $unit or 1 == $dozen && 0 < $unit){
     echo $currency[0];
+}elseif(1 < $unit){
+    echo $currency[1];
+}else{
+    echo $currency[2];
 }
 
 echo PHP_EOL;
