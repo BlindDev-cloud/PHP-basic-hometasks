@@ -2,84 +2,97 @@
 
 $number = random_int(0, 9999);
 //$number = ;
-$thousand = 0;
-$hundred = 0;
-$dozen = 0;
-$unit = 0;
 
-//масив для запису чотиризначноого (и меньшого) числа словами
-$numbersToWords = [
-    ['одна', 'дві', 'три', 'чотири', 'п\'ять', 'шість', 'сім', 'вісім', 'дев\'ять'],
-    ['сто', 'двісті', 'триста', 'чотириста', 'п\'ятсот', 'шістсот', 'сімсот', 'вісімсот', 'дев\'ятсот'],
-    ['десять', 'двадцять', 'тридцять', 'сорок', 'п\'ятдесят', 'шістдесят', 'сімдесят', 'вісімдесят', 'дев\'яносто'],
-    ['один', 'два', 'три', 'чотири', 'п\'ять', 'шість', 'сім', 'вісім', 'дев\'ять'],
-    ['одинадцять', 'дванадцять', 'тринадцять', 'чотирнадцять', 'п\'ятнадцять', 'шістнадцять', 'сімнадцять', 'вісімнадцять', 'дев\'ятнадцять']
-];
+echo $number . ' - ';
 
-$currency = [
-    0 => 'доларів',
-    1 => 'долари',
-    2 => 'долар'
-];
-
-echo $number.' - ';
-
-if($number) {
-    if((int)($number / 1000)){
-        $thousand = (int)($number / 1000);
-        $number -= ($number - $number % 1000);
-    }
-
-    if((int)($number / 100)){
-        $hundred = (int)($number / 100);
-        $number -= ($number - $number % 100);
-    }
-
-    if((int)($number / 10)){
-        $dozen = (int)($number / 10);
-        $number -= ($number - $number % 10);
-    }
-
-    if($number){
-        $unit = $number;
-    }
-
-    if ($thousand) {
-        if (5 <= $thousand) {
-            echo $numbersToWords[0][$thousand - 1] . ' тисяч ';
-        } elseif (1 < $thousand) {
-            echo $numbersToWords[0][$thousand - 1] . ' тисячі ';
-        } else {
-            echo $numbersToWords[0][$thousand - 1] . ' тисяча ';
-        }
-    }
-
-    if ($hundred) {
-        echo $numbersToWords[1][$hundred - 1] . ' ';
-    }
-
-    if ($dozen) {
-        if (1 == $dozen && 0 < $unit) {
-            echo $numbersToWords[4][$unit - 1] . ' ';
-            $unit = 0;
-        } else {
-            echo $numbersToWords[2][$dozen - 1] . ' ';
-        }
-    }
-
-    if ($unit) {
-        echo $numbersToWords[3][$unit - 1] . ' ';
-    }
-}else{
+if(!$number){
     echo 'нуль ';
 }
 
-if(5 <= $unit || 0 == $unit or 1 == $dozen && 0 < $unit){
-    echo $currency[0];
-}elseif(1 < $unit){
-    echo $currency[1];
-}else{
-    echo $currency[2];
+$thousand = (int)($number / 1000);
+$number -= $number - $number % 1000;
+$hundred = (int)($number / 100);
+$number -= $number - $number % 100;
+$tens = (int)($number / 10);
+$number -= $number - $number % 10;
+$unit = $number;
+$teenNumber = 0;
+
+$thousandToWord = match ($thousand) {
+    0 => null,
+    1 => 'тисяча ',
+    2 => 'дві тисячі ',
+    3 => 'три тисячі ',
+    4 => 'чотири тисячі ',
+    5 => 'п\'ять тисяч ',
+    6 => 'шість тисяч ',
+    7 => 'сім тисяч ',
+    8 => 'вісім тисяч ',
+    9 => 'дев\'ять тисяч '
+};
+
+$hundredToWord = match ($hundred) {
+    0 => null,
+    1 => 'сто ',
+    2 => 'двісті ',
+    3 => 'триста ',
+    4 => 'чотириста ',
+    5 => 'п\'ятсот ',
+    6 => 'шістсот ',
+    7 => 'сімсот ',
+    8 => 'вісімсот ',
+    9 => 'дев\'ятсот '
+};
+
+$tensToWord = match ($tens) {
+    0 => null,
+    1 => 'десять ',
+    2 => 'двадцять ',
+    3 => 'тридцять ',
+    4 => 'сорок ',
+    5 => 'п\'ятдесят ',
+    6 => 'шістдесят ',
+    7 => 'сімдесят ',
+    8 => 'вісімдесят ',
+    9 => 'дев\'яносто '
+};
+
+$teenNumberToWord = match ($unit) {
+    0 => null,
+    1 => 'одинадцять ',
+    2 => 'дванадцять ',
+    3 => 'тринадцять ',
+    4 => 'чотирнадцять ',
+    5 => 'п\'ятнадцять ',
+    6 => 'шістнадцять ',
+    7 => 'сімнадцять ',
+    8 => 'вісімнадцять ',
+    9 => 'дев\'ятнадцять '
+};
+
+$unitToWord = match ($unit) {
+    0 => null,
+    1 => 'один ',
+    2 => 'два ',
+    3 => 'три ',
+    4 => 'чотири ',
+    5 => 'п\'ять ',
+    6 => 'шість ',
+    7 => 'сім ',
+    8 => 'вісім ',
+    9 => 'дев\'ять '
+};
+
+$currency = match ($unit) {
+    1 => 'долар',
+    2, 3, 4 => 'долари',
+    default => 'доларів'
+};
+
+if (!(1 == $tens && 0 < $unit)) {
+    echo $thousandToWord . $hundredToWord . $tensToWord . $unitToWord . $currency;
+} else {
+    echo $thousandToWord . $hundredToWord . $teenNumberToWord . 'доларів';
 }
 
 echo PHP_EOL;
