@@ -4,18 +4,21 @@ body {
     background-image: url("../images/magician.jpg");
     background-size: cover;
     background-position: center;
+    padding-top: 30px;
 }
 
 h1, h2, h3, p ,ul, .logo {
     color: white;
 }
 
+header, main, footer{
+    background-color: rgba(0, 23, 37, 0.70);
+}
+
 header {
     box-sizing: border-box;
     height: 150px;
-    margin: 0 100px 50px 100px;
-    background-color: transparent;
-    font-family: Lemonada;
+    margin: 0 100px 0 100px;
 }
 
 .logo {
@@ -23,6 +26,7 @@ header {
     font-size: 36px;
     text-align: center;
     padding: 40px 0;
+    color: gray;
 }
 
 main {
@@ -30,7 +34,6 @@ main {
     height: 1000px;
     margin: 0 100px 0 100px;
     padding: 0 50px 0 50px;
-    background-color: rgba(0, 23, 37, 0.55);
     font-family: Roboto;
 }
 
@@ -81,7 +84,6 @@ footer {
     margin: 0 100px;
     padding: 20px 50px 20px 120px;
     border: 3px solid white;
-    background-color: rgba(0, 23, 37, 0.75);
     font-family: Roboto;
     font-size: 20px;
 }
