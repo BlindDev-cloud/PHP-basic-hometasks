@@ -19,14 +19,10 @@ header {
     box-sizing: border-box;
     height: 150px;
     margin: 0 100px 0 100px;
-}
-
-.logo {
-    box-sizing: border-box;
     font-size: 36px;
+    color: white;
     text-align: center;
     padding: 40px 0;
-    color: gray;
 }
 
 main {
@@ -35,13 +31,14 @@ main {
     margin: 0 100px 0 100px;
     padding: 0 50px 0 50px;
     font-family: Roboto;
+    padding-top: 20px;
+    margin-bottom: 10px;
 }
 
 main article h1{
     font-size: 56px;
     text-align: center;
-    padding-top: 20px;
-    margin-bottom: 10px;
+
 }
 
 main article p {
