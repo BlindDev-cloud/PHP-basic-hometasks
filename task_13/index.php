@@ -6,8 +6,8 @@ if (0 === preg_match('/^(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\d|3[0-1])$/', $dat
     exit('Incorrect format!'.PHP_EOL.'Example: "2002-07-30"'.PHP_EOL);
 }
 
-$year = substr($date, 0, 4);
-$month = substr($date, 5, 2);
+[$year, $month, $day] = explode('-', $date);
+
 $month .= match ($month) {
     '01' => ' (січень)',
     '02' => ' (лютий)',
@@ -22,7 +22,6 @@ $month .= match ($month) {
     '11' => ' (листопад)',
     '12' => ' (грудень)'
 };
-$day = substr($date, 8, 2);
 
 echo 'Рік: ' . $year . PHP_EOL;
 echo 'Місяць: ' . $month . PHP_EOL;
