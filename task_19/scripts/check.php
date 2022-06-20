@@ -25,25 +25,25 @@ if ('POST' !== $_SERVER['REQUEST_METHOD']) {
 // 2. Validate data
 
 if (!isset($_POST['condition']) || !isset($_POST['answer'])) {
-    exit('Не трогай консоль');
+    exit('Не торкайтеся консолі.');
 }
 
 if (12 !== count($_POST['condition']) || 12 !== count($_POST['answer'])) {
-    exit('Почему элементов не 12? Не трогай консоль');
+    exit('Чому елементів не 12? Не торкайтеся консолі!');
 }
 
 $condition = $_POST['condition'];
 $answer = $_POST['answer'];
 
 foreach ($condition as $value) {
-    if (0 === preg_match('/^(-|)(100|\d{1,2})\s([-+*\/])\s(\((-)(100|\d{1,2}\)))|(100|\d{1,2})$/', $value)) {
-        exit('Не правильный формат условия');
+    if (0 === preg_match('/^(-|)(100|\d{1,2})\s([-+*\/])\s(-|)(100|\d{1,2})$/', $value)) {
+        exit('Неправильний формат умови');
     }
 }
 
 foreach ($answer as $value) {
     if (0 === preg_match('/^(-|)((10000|\d{1,4})|(10000|\d{1,4})\.(\d{1,2}))$/', $value)) {
-        exit('Не правильный формат ответа');
+        exit('Невірний формат відповіді');
     }
 }
 
@@ -59,8 +59,7 @@ for($i = 0; $i < 12; ++$i){
 
 // 4. Send feedback
 
-echo $count.'/12</br>';
-
+echo '<h1>'.$count.'/12</h1>';
 
 
 
