@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Контрольная</title>
+    <title>Контрольна робота</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
