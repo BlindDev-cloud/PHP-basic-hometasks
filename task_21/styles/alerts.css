@@ -1,0 +1,28 @@
+
+.alerts{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: start;
+    background-color: rgb(0, 10, 30);
+}
+
+.error, .warning{
+    font-size: 20px;
+    text-align: start;
+    margin-left: 5px;
+}
+
+.error{
+    color: rgb(255, 70, 70);
+}
+
+.warning{
+    color: orange;
+}
+
+.success{
+    font-size: 32px;
+    margin: auto;
+    text-align: center;
+    color: green;
+}
