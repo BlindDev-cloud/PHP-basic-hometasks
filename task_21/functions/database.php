@@ -67,20 +67,7 @@ function user_auth(PDO $database, string $login, string $password) :bool
     return true;
 }
 
-function user_is_auth(PDO $database) :bool
+function user_is_auth() :bool
 {
-
-    $queryString = 'SELECT `login` FROM `users`';
-
-    $statement = $database->query($queryString);
-
-    $users = $statement->fetchAll();
-
-    $logins = array_column($users, 'login');
-
-    if(in_array($_SESSION['auth'], $logins) && !empty($_SESSION['auth'])){
-        return true;
-    }
-
-    return false;
+    return !empty($_SESSION['auth']);
 }

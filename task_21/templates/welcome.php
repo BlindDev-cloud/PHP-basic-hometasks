@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . '/../functions/database.php'; ?>
 
-<?php if (user_is_auth(database_connection())): ?>
+<?php if (user_is_auth()): ?>
 
     <section class="main-block">
 

@@ -19,7 +19,7 @@ $password = md5($_POST['password']);
 
 // 3. Check user isn`t already authenticated
 
-if(user_is_auth(database_connection())){
+if(user_is_auth()){
     set_alert('warning', 'You are already authenticated');
 
     header('Location: /git-repos/php-basic-hometasks/task_21/authentication.php');
