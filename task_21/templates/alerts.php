@@ -2,7 +2,7 @@
 
 require_once  __DIR__.'/../functions/alerts.php';
 
-$alerts = $_SESSION['alerts'];
+$alerts = get_alerts();
 ?>
 
 <?php if (!empty($alerts)): ?>

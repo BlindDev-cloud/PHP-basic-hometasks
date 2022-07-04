@@ -12,7 +12,7 @@ check_request_method();
 
 // 2. Validate data
 
-check_data_existance('login', 'password');
+check_data_existence('login', 'password');
 
 $login = strip_tags(trim($_POST['login']));
 $password = md5($_POST['password']);
@@ -27,7 +27,7 @@ if(user_is_auth()){
     exit();
 }
 
-// 4. Authenticate user
+// 4. Check user registration and password fit
 
 if(!user_auth(database_connection(), $login, $password)){
     set_alert('warning', 'User does not exist or wrong password');
@@ -37,7 +37,9 @@ if(!user_auth(database_connection(), $login, $password)){
     exit();
 }
 
-// 5. Go back to home page
+// 5. Authenticate user and go back to the home page
+
+$_SESSION['auth'] = $login;
 
 set_alert('success', 'Welcome '.$login.'!');
 

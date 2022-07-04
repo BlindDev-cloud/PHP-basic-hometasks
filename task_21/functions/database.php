@@ -53,16 +53,18 @@ function user_auth(PDO $database, string $login, string $password) :bool
 
     $statement = $database->query($queryString);
 
-    $users = $statement->fetchAll();
+    $isRegistered = false;
 
-    $logins = array_column($users, 'login');
-    $passwords = array_column($users, 'password');
-
-    if(!in_array($login, $logins) || !in_array($password, $passwords)){
-        return false;
+    while($user = $statement->fetch()){
+        if($login === $user['login'] && $password === $user['password']){
+            $isRegistered = true;
+            break;
+        }
     }
 
-    $_SESSION['auth'] = $login;
+    if(!$isRegistered){
+        return false;
+    }
 
     return true;
 }

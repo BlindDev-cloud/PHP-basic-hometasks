@@ -12,7 +12,7 @@ check_request_method();
 
 // 2. Validate data
 
-check_data_existance('login', 'email', 'password');
+check_data_existence('login', 'email', 'password');
 
 $login = strip_tags(trim($_POST['login']));
 $email = strip_tags(preg_replace('/\s/', '', $_POST['email']));

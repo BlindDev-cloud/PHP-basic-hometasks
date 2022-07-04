@@ -11,7 +11,7 @@ function check_request_method(): void
     }
 }
 
-function check_data_existance(...$keys): void
+function check_data_existence(...$keys): void
 {
     foreach ($keys as $key) {
 
