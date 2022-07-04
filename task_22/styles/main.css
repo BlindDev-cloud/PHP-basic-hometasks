@@ -1,0 +1,108 @@
+
+body{
+    background-color: rgb(0, 20, 50);
+}
+
+header h1, main{
+    color: white;
+}
+
+header{
+    box-sizing: border-box;
+    height: 200px;
+}
+
+header h1{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 52PX;
+    margin: 0 0 100px 0;
+}
+
+header nav{
+    display: flex;
+    align-self: start;
+    justify-content: end;
+    align-items: center;
+    margin: 10px 30px 0 0;
+}
+
+header nav a{
+    border-radius: 50px;
+    background-color: rgb(20, 40, 100);
+    color: white;
+    text-align: center;
+    margin-right: 7px;
+    height: 30px;
+    font-size: 22px;
+    padding: 10px 5px;
+}
+
+.authenticate{
+    width: 100px;
+}
+
+.register{
+    width: 120px;
+}
+
+.main-block{
+    box-sizing: border-box;
+    width: 75%;
+    margin: auto;
+}
+
+.main-content{
+    text-align: center;
+    font-size: 42px;
+}
+
+.video{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.register-message{
+   text-align: center;
+    font-size: 64px;
+}
+
+.log-out{
+    box-sizing: border-box;
+    border-radius: 50px;
+    margin-right: 20px;
+    padding: 10px 5px;
+    width: 100px;
+    font-size: 22px;
+    background-color: rgb(180, 180, 180);
+    color: black;
+    border: 2px solid black;
+    text-align: center;
+}
+
+.log-out_form{
+    background-color: rgb(0, 10, 30);
+    margin: auto;
+}
+
+.log-out_form p{
+    font-size: 24px;
+    margin: 10px 20px;
+    color: white;
+}
+
+.log-out_form section{
+    display: flex;
+    justify-content: end;
+}
+
+.log-out_form button{
+    color: white;
+    background-color: rgb(0, 10, 30);
+    font-size: 28px;
+    margin: 5px 10px;
+    padding: 5px 10px;
+}
