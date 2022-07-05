@@ -1,15 +1,26 @@
 <?php
 
-$randomIntegers = [1, 2, 3, 5, 9, 12];
+$randomIntegers = [1, 6, 5, 2, 10, 8, 6];
 $length = count($randomIntegers);
 
-for ($i = 0; $i < $length; ++$i) {
-    for ($j = $i + 1; $j < $length; ++$j) {
-        if ($randomIntegers[$i] === $randomIntegers[$j]) {
-            echo json_encode($randomIntegers) . ' Yes' . PHP_EOL;
-            exit;
-        }
+sort($randomIntegers);
+
+for($i = 1; $i < $length; ++$i){
+    if($randomIntegers[$i - 1] === $randomIntegers[$i]){
+        echo 'Has duplicates'.PHP_EOL;
+        exit();
     }
 }
 
-echo json_encode($randomIntegers) . ' No' . PHP_EOL;
+echo 'Does not have duplicates'.PHP_EOL;
+
+//for ($i = 0; $i < $length; ++$i) {
+//    for ($j = $i + 1; $j < $length; ++$j) {
+//        if ($randomIntegers[$i] === $randomIntegers[$j]) {
+//            echo 'Has duplicates'.PHP_EOL;
+//            exit;
+//        }
+//    }
+//}
+//
+//echo 'Does not have duplicates'.PHP_EOL;
