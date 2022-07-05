@@ -1,5 +1,9 @@
+<?php
 
-<?php require_once __DIR__.'/functions/database.php'; ?>
+session_start();
+
+require_once __DIR__ . '/functions/database.php';
+?>
 
 <!doctype html>
 <html lang="en">
@@ -19,13 +23,14 @@
 
             <script src="scripts/popup.js"></script>
 
-            <button id="log-out_button" class="log-out"
+            <button id="logout-button" class="log-out"
                     type="button" onclick="show_form()">
 
                 Log out
+
             </button>
 
-            <form action="scripts/logout.php" id="pop-up-form" class="log-out_form" hidden="">
+            <form action="scripts/logout.php" id="popup-form" class="log-out_form" hidden="">
 
                 <fieldset>
 
@@ -47,7 +52,7 @@
             <a href="authentication.php" class="authenticate">Log in</a>
             <a href="registration.php" class="register">Register</a>
 
-        <?php endif ?>
+        <?php endif; ?>
 
     </nav>
 
@@ -68,8 +73,10 @@
             <p class="main-content">
                 Congratulations!
                 <br>
+
                 You can become a 10xdeveloper
                 <br>
+
                 You just need to watch that video 1000001 times
             </p>
 
@@ -90,11 +97,11 @@
         <p class="register-message">
             Register and you can become a 10xdeveloper
             <br>
+
             TRUST ME
         </p>
 
-    <?php endif ?>
-
+    <?php endif; ?>
 
 </main>
 

@@ -2,9 +2,9 @@
 
 session_start();
 
-require_once __DIR__.'/../functions/database.php';
-require_once __DIR__.'/../functions/alerts.php';
-require_once __DIR__.'/../functions/checks.php';
+require_once __DIR__ . '/../functions/database.php';
+require_once __DIR__ . '/../functions/alerts.php';
+require_once __DIR__ . '/../functions/checks.php';
 
 // 1. Check request
 
@@ -19,7 +19,7 @@ $password = md5($_POST['password']);
 
 // 3. Check user isn`t already authenticated
 
-if(user_is_auth()){
+if (user_is_auth()) {
     set_alert('warning', 'You are already authenticated');
 
     header('Location: /git-repos/php-basic-hometasks/task_22/authentication.php');
@@ -27,9 +27,9 @@ if(user_is_auth()){
     exit();
 }
 
-// 4. Check user registration and password fit
+// 4. Check user registration and password fit and authenticate user
 
-if(!user_auth(database_connection(), $login, $password)){
+if (!user_auth(database_connection(), $login, $password)) {
     set_alert('warning', 'User does not exist or wrong password');
 
     header('Location: /git-repos/php-basic-hometasks/task_22/authentication.php');
@@ -37,8 +37,8 @@ if(!user_auth(database_connection(), $login, $password)){
     exit();
 }
 
-// 5. Authenticate user and go back to the home page
+// 5. Go back to the home page
 
-setcookie('auth', $login, cookie_lifetime(), '/git-repos/php-basic-hometasks/task_22/');
+set_alert('success', 'Welcome ' . $login);
 
 header('Location: /git-repos/php-basic-hometasks/task_22/index.php');

@@ -1,9 +1,8 @@
 <?php
 
-require_once  __DIR__.'/../functions/alerts.php';
+require_once __DIR__ . '/../functions/alerts.php';
 
 $alerts = get_alerts();
-
 ?>
 
 <?php if (!empty($alerts)): ?>

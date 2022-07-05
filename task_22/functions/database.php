@@ -24,8 +24,8 @@ function user_register(PDO $database, array $data): bool
     $statement = $database->query($queryString);
 
     while ($user = $statement->fetch()) {
-        if ($data['email'] === $user['email']
-            || $data['login'] === $user['login']) {
+        if ($data['email'] === $user['email'] ||
+            $data['login'] === $user['login']) {
             return false;
         }
     }
@@ -38,6 +38,7 @@ function user_register(PDO $database, array $data): bool
                     )';
 
     $statement = $database->prepare($queryString);
+
     $statement->execute([
         'userLogin' => $data['login'],
         'userEmail' => $data['email'],
@@ -55,16 +56,20 @@ function user_auth(PDO $database, string $login, string $password): bool
 
     $isRegistered = false;
 
-    while($user = $statement->fetch()){
-        if($login === $user['login'] && $password === $user['password']){
+    while ($user = $statement->fetch()) {
+        if ($login === $user['login'] && $password === $user['password']) {
             $isRegistered = true;
             break;
         }
     }
 
-    if(!$isRegistered){
+    if (!$isRegistered) {
         return false;
     }
+
+    $path = '/git-repos/php-basic-hometasks/task_22/';
+
+    setcookie('auth', $login, cookie_lifetime(), $path);
 
     return true;
 }
@@ -81,5 +86,7 @@ function cookie_lifetime(): int
 
 function flush_auth(): void
 {
-    setcookie('auth', '', time() - 60, '/git-repos/php-basic-hometasks/task_22/');
+    $path = '/git-repos/php-basic-hometasks/task_22/';
+
+    setcookie('auth', '', time() - 60, $path);
 }

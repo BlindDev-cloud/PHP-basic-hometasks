@@ -2,9 +2,9 @@
 
 session_start();
 
-require_once __DIR__.'/../functions/database.php';
-require_once __DIR__.'/../functions/alerts.php';
-require_once __DIR__.'/../functions/checks.php';
+require_once __DIR__ . '/../functions/database.php';
+require_once __DIR__ . '/../functions/alerts.php';
+require_once __DIR__ . '/../functions/checks.php';
 
 // 1. Check request
 
@@ -28,7 +28,7 @@ $userdata = [
     'password' => $password
 ];
 
-if(!user_register(database_connection(), $userdata)){
+if (!user_register(database_connection(), $userdata)) {
     set_alert('warning', 'User already exists');
 
     header('Location: /git-repos/php-basic-hometasks/task_22/registration.php');
@@ -38,8 +38,10 @@ if(!user_register(database_connection(), $userdata)){
 
 // 4. Authenticate registered user
 
-setcookie('auth', $login, cookie_lifetime(), '/git-repos/php-basic-hometasks/task_22/');
+user_auth(database_connection(), $login, $password);
 
 // 5. Go back to home page
+
+set_alert('success', 'Welcome ' . $login);
 
 header('Location: /git-repos/php-basic-hometasks/task_22/index.php');
