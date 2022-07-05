@@ -27,19 +27,17 @@ if(user_is_auth()){
     exit();
 }
 
-// 4. Check user registration and password fit
+// 4. Check user registration and password fit and authenticate user
 
 if(!user_auth(database_connection(), $login, $password)){
-    set_alert('warning', 'User does not exist or wrong password');
+    set_alert('error', 'User does not exist or wrong password');
 
     header('Location: /git-repos/php-basic-hometasks/task_21/authentication.php');
 
     exit();
 }
 
-// 5. Authenticate user and go back to the home page
-
-$_SESSION['auth'] = $login;
+// 5. Go back to the home page
 
 set_alert('success', 'Welcome '.$login.'!');
 

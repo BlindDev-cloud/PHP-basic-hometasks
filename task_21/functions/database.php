@@ -1,10 +1,10 @@
 <?php
 
-function database_connection() :PDO
+function database_connection(): PDO
 {
     static $connection = null;
 
-    if(null === $connection){
+    if (null === $connection) {
         $dsn = 'mysql:host=mysql;port=3306;dbname=db;charset=utf8mb4';
 
         $connection = new PDO($dsn, username: 'root', password: 'root', options: [
@@ -17,15 +17,15 @@ function database_connection() :PDO
     return $connection;
 }
 
-function user_register(PDO $database, array $data) :bool
+function user_register(PDO $database, array $data): bool
 {
     $queryString = 'SELECT `login`, `email` FROM `users`';
 
     $statement = $database->query($queryString);
 
-    while($user = $statement->fetch()){
-        if($data['email'] === $user['email']
-                || $data['login'] === $user['login']){
+    while ($user = $statement->fetch()) {
+        if ($data['email'] === $user['email'] ||
+            $data['login'] === $user['login']) {
             return false;
         }
     }
@@ -38,6 +38,7 @@ function user_register(PDO $database, array $data) :bool
                     )';
 
     $statement = $database->prepare($queryString);
+
     $statement->execute([
         'userLogin' => $data['login'],
         'userEmail' => $data['email'],
@@ -47,7 +48,7 @@ function user_register(PDO $database, array $data) :bool
     return true;
 }
 
-function user_auth(PDO $database, string $login, string $password) :bool
+function user_auth(PDO $database, string $login, string $password): bool
 {
     $queryString = 'SELECT `login`, `password` FROM `users`';
 
@@ -55,21 +56,23 @@ function user_auth(PDO $database, string $login, string $password) :bool
 
     $isRegistered = false;
 
-    while($user = $statement->fetch()){
-        if($login === $user['login'] && $password === $user['password']){
+    while ($user = $statement->fetch()) {
+        if ($login === $user['login'] && $password === $user['password']) {
             $isRegistered = true;
             break;
         }
     }
 
-    if(!$isRegistered){
+    if (!$isRegistered) {
         return false;
     }
+
+    $_SESSION['auth'] = $login;
 
     return true;
 }
 
-function user_is_auth() :bool
+function user_is_auth(): bool
 {
     return !empty($_SESSION['auth']);
 }

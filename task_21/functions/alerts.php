@@ -1,6 +1,6 @@
 <?php
 
-function set_alert(string $type, string $text) :void
+function set_alert(string $type, string $text): void
 {
     $_SESSION['alerts'][] = [
         'type' => $type,
@@ -8,12 +8,12 @@ function set_alert(string $type, string $text) :void
     ];
 }
 
-function get_alerts() :array
+function get_alerts(): array
 {
     return $_SESSION['alerts'] ?? [];
 }
 
-function flush_alerts() :void
+function flush_alerts(): void
 {
     $_SESSION['alerts'] = [];
 }

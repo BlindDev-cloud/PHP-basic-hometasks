@@ -1,18 +1,18 @@
 
-body{
+body {
     background-color: rgb(0, 20, 50);
 }
 
-header h1, main{
+header h1, main {
     color: white;
 }
 
-header{
+header {
     box-sizing: border-box;
     height: 200px;
 }
 
-header h1{
+header h1 {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -20,7 +20,7 @@ header h1{
     margin: 0 0 100px 0;
 }
 
-header nav{
+header nav {
     display: flex;
     align-self: start;
     justify-content: end;
@@ -28,7 +28,7 @@ header nav{
     margin: 10px 30px 0 0;
 }
 
-header nav a{
+header nav a {
     border-radius: 50px;
     background-color: rgb(20, 40, 100);
     color: white;
@@ -39,33 +39,33 @@ header nav a{
     padding: 10px 5px;
 }
 
-.authenticate{
+.authenticate {
     width: 100px;
 }
 
-.register{
+.register {
     width: 120px;
 }
 
-.main-block{
+.main-block {
     box-sizing: border-box;
     width: 75%;
     margin: auto;
 }
 
-.main-content{
+.main-content {
     text-align: center;
     font-size: 42px;
 }
 
-.video{
+.video {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
 }
 
-.register-message{
-   text-align: center;
+.register-message {
+    text-align: center;
     font-size: 64px;
 }

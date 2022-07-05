@@ -18,13 +18,7 @@ $login = strip_tags(trim($_POST['login']));
 $email = strip_tags(preg_replace('/\s/', '', $_POST['email']));
 $password = md5($_POST['password']);
 
-if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-    set_alert('error', 'Not an E-mail');
-
-    header('Location: /git-repos/php-basic-hometasks/task_21/registration.php');
-
-    exit();
-}
+check_email($email);
 
 // 3. Register user
 
@@ -44,7 +38,7 @@ if(!user_register(database_connection(), $userdata)){
 
 // 4. Authenticate registered user
 
-$_SESSION['auth'] = $login;
+user_auth(database_connection(), $login, $password);
 
 // 5. Go back to home page
 

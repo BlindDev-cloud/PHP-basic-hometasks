@@ -1,4 +1,6 @@
-<?php require_once __DIR__ . '/../functions/database.php'; ?>
+<?php
+require_once __DIR__ . '/../functions/database.php';
+?>
 
 <?php if (user_is_auth()): ?>
 
@@ -37,5 +39,5 @@
 
     </p>
 
-<?php endif ?>
+<?php endif; ?>
 
