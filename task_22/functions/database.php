@@ -67,7 +67,7 @@ function user_auth(PDO $database, string $login, string $password): bool
         return false;
     }
 
-    $path = '/git-repos/php-basic-hometasks/task_22/';
+    $path = '/';
 
     setcookie('auth', $login, cookie_lifetime(), $path);
 
@@ -86,7 +86,7 @@ function cookie_lifetime(): int
 
 function flush_auth(): void
 {
-    $path = '/git-repos/php-basic-hometasks/task_22/';
+    $path = '/';
 
     setcookie('auth', '', time() - 60, $path);
 }
