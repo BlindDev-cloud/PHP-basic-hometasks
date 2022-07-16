@@ -2,12 +2,17 @@
 
 session_start();
 
+require_once __DIR__ . '/functions/alerts.php';
+require_once __DIR__ . '/functions/templates.php';
+
 if (empty($_COOKIE['productIDs'])) {
 
     header('Location: /git-repos/php-basic-hometasks/task_24/index.php');
 
     exit();
 }
+
+$alerts = get_alerts();
 
 ?>
 
@@ -18,7 +23,7 @@ if (empty($_COOKIE['productIDs'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Checkout Form</title>
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
@@ -31,9 +36,9 @@ if (empty($_COOKIE['productIDs'])) {
 
             <div class="col col-lg-2">
 
-                    <a href="checkout.php" class="btn btn-lg btn-light d-block w-100 mt-3">
-                        &#8592 Back
-                    </a>
+                <a href="checkout.php" class="btn btn-lg btn-light d-block w-100 mt-3">
+                    &#8592 Back
+                </a>
 
             </div>
 
@@ -80,12 +85,16 @@ if (empty($_COOKIE['productIDs'])) {
 
                     </div>
 
-                    <?php require_once __DIR__ . '/templates/alerts.php'; ?>
+                    <?php echo get_template_contents(__DIR__ . '/templates/alerts.php', [
+                        'alerts' => $alerts
+                    ]); ?>
 
                     <div class="mt-4">
+
                         <button type="submit" class="btn btn-lg btn-success d-block w-100">
                             Checkout
                         </button>
+
                     </div>
 
                 </form>

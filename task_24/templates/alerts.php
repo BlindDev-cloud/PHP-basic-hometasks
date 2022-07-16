@@ -1,24 +1,16 @@
-<?php
-
-require_once __DIR__.'/../functions/alerts.php';
-
-$alerts= get_alerts();
-
-?>
-
-<?php if(!empty($alerts)): ?>
+<?php if (!empty($_alerts)): ?>
 
     <div class="mb-3">
 
-        <?php foreach ($alerts as $alert): ?>
+        <?php foreach ($_alerts as $alert): ?>
 
-      <div class="alert <?php echo $alert['type']; ?>">
+            <div class="alert <?php echo $alert['type']; ?>">
 
-          <?php echo $alert['text']; ?>
+                <?php echo $alert['text']; ?>
 
-      </div>
+            </div>
 
-      <?php endforeach;; ?>
+        <?php endforeach;; ?>
 
     </div>
 

@@ -14,8 +14,8 @@ check_request_method();
 // 2. Validate data
 
 $name = trim(preg_replace('/ \s{2,} /', ' ', strip_tags($_POST['name']))) ?? null;
-$email = trim(preg_replace('/ \s /', ' ', strip_tags($_POST['email']))) ?? null;
-$phone = trim(preg_replace('/ \s /', '', strip_tags($_POST['phone']))) ?? null;
+$email = trim(preg_replace('/ \s /', '', strip_tags($_POST['email']))) ?? null;
+$phone = trim(preg_replace('/ \D /', '', strip_tags($_POST['phone']))) ?? null;
 
 check_data_existence($name, $email, $phone);
 
@@ -30,7 +30,6 @@ $sum = $_SESSION['sum'];
 $_SESSION['products'] = [];
 $_SESSION['sum'] = [];
 
-
 // 3. Create order in database
 
 add_order($name, $email, $phone,
@@ -38,9 +37,9 @@ add_order($name, $email, $phone,
 
 // 4. Clean cart
 
-clean_cookie('products');
+clean_cookie('productIDs');
 
-// 5. Go back to the success message
+// 5. Go to the success message
 
 header('Location: /git-repos/php-basic-hometasks/task_24/checkout-success.php');
 

@@ -1,6 +1,3 @@
-<?php
-$productIDS = json_decode($_COOKIE['productIDs'], true) ?? null;
-?>
 
 <header>
 
@@ -34,12 +31,12 @@ $productIDS = json_decode($_COOKIE['productIDs'], true) ?? null;
 
                     </li>
 
-                    <?php if(!empty($productIDS)): ?>
+                    <?php if(!empty($_productIDS)): ?>
 
                         <li class="nav-item">
 
                             <a href="checkout.php" class="nav-link">
-                                Cart <?php echo count($productIDS); ?>
+                                Cart <?php echo count($_productIDS); ?>
                             </a>
 
                         </li>

@@ -2,12 +2,15 @@
 
 require_once __DIR__ . '/functions/products.php';
 require_once __DIR__ . '/functions/checks.php';
+require_once __DIR__ . '/functions/templates.php';
 
 check_product_id();
 
 $id = $_GET['id'];
 
 $product = get_product($id);
+
+$productIDS = json_decode($_COOKIE['productIDs'], true) ?? [];
 
 ?>
 
@@ -18,12 +21,14 @@ $product = get_product($id);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Product Card</title>
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 
-<?php require __DIR__ . '/templates/header.php' ?>
+<?php echo get_template_contents(__DIR__ . '/templates/header.php', [
+    'productIDS' => $productIDS
+]); ?>
 
 <main>
 

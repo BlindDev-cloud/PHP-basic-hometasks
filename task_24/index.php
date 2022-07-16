@@ -12,6 +12,8 @@ $products = get_all_products($offset, $productsPerPage);
 $productsCount = count_products();
 $maxPage = ceil($productsCount / $productsPerPage);
 
+$productIDS = json_decode($_COOKIE['productIDs'], true) ?? [];
+
 ?>
 
 <!doctype html>
@@ -21,12 +23,14 @@ $maxPage = ceil($productsCount / $productsPerPage);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 
-<?php require __DIR__ . '/templates/header.php' ?>
+<?php echo get_template_contents(__DIR__ . '/templates/header.php', [
+    'productIDS' => $productIDS
+]); ?>
 
 <main>
 
@@ -80,7 +84,6 @@ $maxPage = ceil($productsCount / $productsPerPage);
         </div>
 
     </div>
-
 
 </main>
 

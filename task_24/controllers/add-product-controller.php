@@ -27,6 +27,7 @@ if (!is_uploaded_file($_FILES['image']['tmp_name'])) {
 }
 
 $uploadedFileMime = $_FILES['image']['type'];
+
 $allowedMimes = [
     'image/jpeg',
     'image/png'
@@ -53,6 +54,7 @@ if (!is_numeric($price)) {
 $storageDirectory = __DIR__ . '/../storage';
 
 $uploadedFileExtension = array_reverse(explode('.', $image))[0];
+
 $uploadedFileName = date('Y-m-d_h:i:s') . '_' . uniqid('', true) . '.' . $uploadedFileExtension;
 
 $uploadedFilePath = $storageDirectory . '/' . $uploadedFileName;

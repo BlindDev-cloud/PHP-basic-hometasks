@@ -2,7 +2,7 @@
 
 require_once __DIR__.'/../functions/cookie.php';
 
-// 1. Clean cookie with products ids
+// 1. Clean cart
 
 clean_cookie('productIDs');
 
