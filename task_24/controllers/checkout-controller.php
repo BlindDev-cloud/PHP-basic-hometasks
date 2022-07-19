@@ -13,9 +13,9 @@ check_request_method();
 
 // 2. Validate data
 
-$name = trim(preg_replace('/ \s{2,} /', ' ', strip_tags($_POST['name']))) ?? null;
-$email = trim(preg_replace('/ \s /', '', strip_tags($_POST['email']))) ?? null;
-$phone = trim(preg_replace('/ \D /', '', strip_tags($_POST['phone']))) ?? null;
+$name = trim(preg_replace('/\s{2,}/', ' ', strip_tags($_POST['name']))) ?? null;
+$email = trim(preg_replace('/\s/', '', strip_tags($_POST['email']))) ?? null;
+$phone = trim(preg_replace('/\D/', '', strip_tags($_POST['phone']))) ?? null;
 
 check_data_existence($name, $email, $phone);
 

@@ -12,9 +12,9 @@ check_request_method();
 
 // 2. Validate data
 
-$name = trim(preg_replace('/ \s{2,} /', ' ', strip_tags($_POST['name']))) ?? null;
+$name = trim(preg_replace('/\s{2,}/', ' ', strip_tags($_POST['name']))) ?? null;
 $image = $_FILES['image']['name'] ?? null;
-$price = preg_replace('/ \D /', '', $_POST['price']) ?? null;
+$price = preg_replace('/\D/', '', $_POST['price']) ?? null;
 
 check_data_existence($name, $image, $price);
 

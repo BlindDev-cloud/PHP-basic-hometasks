@@ -10,37 +10,29 @@
 </head>
 <body>
 
-<header>
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col col-lg-2">
-
-                <a href="index.php" class="btn btn-lg btn-light d-block w-100 mt-3">
-                    &#8592 To Home
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</header>
-
 <main>
 
-    <div class="container">
+    <div class="container my-5 mx-y py-5 bg-success text-light">
 
         <div class="row justify-content-center">
 
             <div class="col col-lg-6">
 
-                <h1 class="alert-success text-center">
-                    Your order is completed
+                <h1 class="text-center">
+                    Your order is completed!
                 </h1>
+
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center wl-5">
+
+            <div class="col col-lg-6">
+
+                <a href="index.php" class="btn btn-lg btn-dark d-block w-25 mt-5">
+                    &#8592 To Home
+                </a>
 
             </div>
 

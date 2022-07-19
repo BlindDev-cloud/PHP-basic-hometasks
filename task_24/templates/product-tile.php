@@ -2,7 +2,7 @@
 
     <div class="card">
 
-        <img src="<?php echo $_image; ?>" alt="" class="card-img-top">
+            <img class="card-img-top" src="<?php echo $_image; ?>" alt="">
 
         <div class="card-body">
 

@@ -41,7 +41,7 @@ function check_email(string $email): void
 
 function check_product_id(): void
 {
-    if (!isset($_GET['id']) || !product_exists((int)($_GET['id']))) {
+    if (!isset($_GET['id']) || !is_numeric($_GET['id']) || !product_exists((int)($_GET['id']))) {
         http_response_code(404);
 
         exit();
@@ -50,14 +50,12 @@ function check_product_id(): void
 
 function check_phone_number(string $phone): void
 {
-    $availableLengths = [9, 12];
+   if(!preg_match('/^\d{9}$/', $phone)){
+       set_alert('alert-warning', 'Isn`t phone number');
 
-    if(!is_int((int)($phone)) || !in_array(strlen($phone), $availableLengths)){
-        set_alert('alert-warning', 'Isn`t phone number');
+       header('Location: ' . $_SERVER['HTTP_REFERER']);
 
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-
-        exit();
-    }
+       exit();
+   }
 }
 

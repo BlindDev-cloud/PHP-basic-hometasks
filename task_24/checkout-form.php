@@ -81,7 +81,25 @@ $alerts = get_alerts();
                         <label for="phone" class="form-label">
                             Phone Number
                         </label>
-                        <input type="text" id="phone" name="phone" class="form-control" required>
+
+                        <div class="row">
+
+                            <div class="col-sm-1 mr-3">
+
+                                <p class="form-text text-center">+380</p>
+
+                            </div>
+
+                            <div class="col-sm">
+
+                                <input type="text" id="phone" name="phone" class="form-control" required>
+                                <small class="form-text text-muted">
+                                    Enter the last 9 digits of your phone number
+                                </small>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
