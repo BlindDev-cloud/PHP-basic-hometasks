@@ -7,7 +7,7 @@
 
             <div class="col w-100 text-center mt-4">
 
-                <h1>Welcome administrator!</h1>
+                <h1>Welcome admin!</h1>
 
             </div>
 
@@ -31,12 +31,12 @@
 
                     </li>
 
-                    <?php if(!empty($_productIDS)): ?>
+                    <?php if(!empty($_productIDs)): ?>
 
                         <li class="nav-item">
 
                             <a href="checkout.php" class="nav-link">
-                                Cart <?php echo count($_productIDS); ?>
+                                Cart <?php echo count($_productIDs); ?>
                             </a>
 
                         </li>

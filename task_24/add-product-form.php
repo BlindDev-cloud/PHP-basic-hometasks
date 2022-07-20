@@ -2,10 +2,11 @@
 
 require_once __DIR__ . '/functions/alerts.php';
 require_once __DIR__ . '/functions/templates.php';
+require_once __DIR__ . '/functions/cookie.php';
 
 session_start();
 
-$productIDS = json_decode($_COOKIE['productIDs'], true) ?? [];
+$productIDs = get_cookie_content('productIDs');
 
 $alerts = get_alerts();
 
@@ -24,7 +25,7 @@ $alerts = get_alerts();
 <body>
 
 <?php echo get_template_contents(__DIR__ . '/templates/header.php', [
-    'productIDS' => $productIDS
+    'productIDs' => $productIDs
 ]); ?>
 
 <main>

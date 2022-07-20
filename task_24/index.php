@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/functions/products.php';
 require_once __DIR__ . '/functions/templates.php';
+require_once __DIR__ . '/functions/cookie.php';
 
 $page = (int)($_GET['page'] ?? 1);
 $productsPerPage = 3;
@@ -12,7 +13,7 @@ $products = get_all_products($offset, $productsPerPage);
 $productsCount = count_products();
 $maxPage = ceil($productsCount / $productsPerPage);
 
-$productIDS = json_decode($_COOKIE['productIDs'], true) ?? [];
+$productIDs = get_cookie_content('productIDs');
 
 ?>
 
@@ -29,7 +30,7 @@ $productIDS = json_decode($_COOKIE['productIDs'], true) ?? [];
 <body>
 
 <?php echo get_template_contents(__DIR__ . '/templates/header.php', [
-    'productIDS' => $productIDS
+    'productIDs' => $productIDs
 ]); ?>
 
 <main>

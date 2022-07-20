@@ -1,45 +1,27 @@
 <?php
 
-session_start();
-
 require_once __DIR__ . '/functions/products.php';
 require_once __DIR__ . '/functions/templates.php';
+require_once __DIR__ . '/functions/cookie.php';
+require_once __DIR__ . '/functions/checkout.php';
 
-if (empty($_COOKIE['productIDs'])) {
+$productIDs = get_cookie_content('productIDs');
+
+if (empty($productIDs)) {
 
     header('Location: /git-repos/php-basic-hometasks/task_24/index.php');
 
     exit();
 }
 
-$productIDS = json_decode($_COOKIE['productIDs'], true);
-
-$ids = json_decode($_COOKIE['productIDs'], true);
-$uniqueIDs = array_unique($ids);
+$products = get_list_of_products($productIDs);
 
 $i = 0;
 
-foreach ($uniqueIDs as $uniqueID) {
+$totalCount = 0;
+$totalSum = 0;
 
-    $productCount[$i] = 0;
-
-    foreach ($ids as $id) {
-
-        if ($id === $uniqueID) {
-            ++$productCount[$i];
-        }
-
-    }
-
-    $products[] = get_product($uniqueID);
-    ++$i;
-
-}
-
-$i = 0;
-
-$productCountSum = 0;
-$priceSum = 0;
+print_r($products);
 
 ?>
 
@@ -56,7 +38,7 @@ $priceSum = 0;
 <body>
 
 <?php echo get_template_contents(__DIR__ . '/templates/header.php', [
-    'productIDS' => $productIDS
+    'productIDs' => $productIDs
 ]); ?>
 
 <main>
@@ -88,21 +70,12 @@ $priceSum = 0;
                         'i' => $i,
                         'name' => $product['name'],
                         'price' => $product['price'],
-                        'count' => $productCount[$i]
+                        'count' => $product['count']
                     ]
                 );
-                ?>
 
-                <?php
-
-                $productCountSum += $productCount[$i];
-                $priceSum += round($product['price'] * $productCount[$i], 2);
-
-                $_SESSION['products'][] = [
-                    'name' => $product['name'],
-                    'count' => $productCount[$i]
-                ];
-
+                $totalCount += $product['count'];
+                $totalSum += round($product['price'] * $product['count'], 2);
                 ++$i;
 
                 ?>
@@ -115,23 +88,17 @@ $priceSum = 0;
                 <td>-</td>
                 <td>
                     <?php
-                    echo $productCountSum;
+                    echo $totalCount;
                     ?>
                 </td>
                 <td>
                     <?php
-                    echo number_format($priceSum, 2);
+                    echo number_format($totalSum, 2);
                     ?>
                 </td>
             </tr>
 
             </tbody>
-
-            <?php
-
-            $_SESSION['sum'] = $priceSum;
-
-            ?>
 
         </table>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 192.168.0.123:3306
--- Generation Time: Jul 16, 2022 at 09:17 AM
+-- Generation Time: Jul 20, 2022 at 10:30 AM
 -- Server version: 8.0.29
 -- PHP Version: 8.0.21
 
@@ -41,7 +41,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `name`, `email`, `phone_number`, `list_of_products`, `sum`) VALUES
-(1, 'MyNickName', 'example@gmail.com', '380362743541', '[{\"name\": \"A-Rank laptop\", \"count\": 1}, {\"name\": \"SSS-rank laptop\", \"count\": 1}]', '339856.00');
+(1, 'Volodymyr', 'example@gmail.com', '123456789', '[{\"name\": \"S-Rank laptop\", \"count\": 1}, {\"name\": \"B-Rank laptop\", \"count\": 3}, {\"name\": \"F-Rank laptop\", \"count\": 4}]', '1115000.00');
 
 -- --------------------------------------------------------
 
@@ -64,8 +64,7 @@ INSERT INTO `products` (`id`, `name`, `image`, `price`) VALUES
 (1, 'B-Rank laptop', '/git-repos/php-basic-hometasks/task_24/storage/2022-07-12_01:06:27_62cd71d300bab1.12880786.jpg', '25000.00'),
 (2, 'A-Rank laptop', '/git-repos/php-basic-hometasks/task_24/storage/2022-07-12_03:20:24_62cd91389c55f1.05084465.jpg', '100000.00'),
 (3, 'S-Rank laptop', '/git-repos/php-basic-hometasks/task_24/storage/2022-07-12_03:21:04_62cd916078ec24.85082575.jpg', '1000000.00'),
-(4, 'F-Rank laptop', '/git-repos/php-basic-hometasks/task_24/storage/2022-07-12_03:21:28_62cd91780e2d73.12914738.jpg', '10000.00'),
-(5, 'SSS-rank laptop', '/git-repos/php-basic-hometasks/task_24/storage/2022-07-15_06:00:01_62d1ab21ab3068.69953146.jpg', '239856.00');
+(4, 'F-Rank laptop', '/git-repos/php-basic-hometasks/task_24/storage/2022-07-12_03:21:28_62cd91780e2d73.12914738.jpg', '10000.00');
 
 --
 -- Indexes for dumped tables

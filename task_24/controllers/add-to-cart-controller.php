@@ -10,7 +10,7 @@ check_product_id();
 
 // 2. Get ids of all added products
 
-$cartIDs = json_decode($_COOKIE['productIDs'], true) ?? null;
+$cartIDs = get_cookie_content('productIDs');
 
 // 3. Clean cookie
 

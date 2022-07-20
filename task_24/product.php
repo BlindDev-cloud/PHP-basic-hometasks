@@ -3,6 +3,7 @@
 require_once __DIR__ . '/functions/products.php';
 require_once __DIR__ . '/functions/checks.php';
 require_once __DIR__ . '/functions/templates.php';
+require_once __DIR__ . '/functions/cookie.php';
 
 check_product_id();
 
@@ -10,7 +11,7 @@ $id = $_GET['id'];
 
 $product = get_product($id);
 
-$productIDS = json_decode($_COOKIE['productIDs'], true) ?? [];
+$productIDs = get_cookie_content('productIDs');
 
 ?>
 
@@ -27,7 +28,7 @@ $productIDS = json_decode($_COOKIE['productIDs'], true) ?? [];
 <body>
 
 <?php echo get_template_contents(__DIR__ . '/templates/header.php', [
-    'productIDS' => $productIDS
+    'productIDs' => $productIDs
 ]); ?>
 
 <main>

@@ -4,8 +4,11 @@ session_start();
 
 require_once __DIR__ . '/functions/alerts.php';
 require_once __DIR__ . '/functions/templates.php';
+require_once __DIR__ . '/functions/cookie.php';
 
-if (empty($_COOKIE['productIDs'])) {
+$productIDs = get_cookie_content('productIDs');
+
+if (empty($productIDs)) {
 
     header('Location: /git-repos/php-basic-hometasks/task_24/index.php');
 

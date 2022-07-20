@@ -18,7 +18,7 @@ function add_product(string $name, string $image, float $price) :void
     $statement->execute(compact('name', 'image', 'price'));
 }
 
-function get_all_products(int $offset, int $limit) : array
+function get_all_products(int $offset = 0, int $limit = 0) : array
 {
     $connection = get_database_connection();
 
